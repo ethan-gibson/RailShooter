@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class EnemyController : Entity
 {
-    [SerializeField] private Transform newCamPos;
+    private AreaController areaController;
     protected override void die()
     {
-        GameManager.Instance.MoveCamToNextLocation(newCamPos);
+        areaController.EnemyDied();
         Destroy(gameObject);
+    }
+
+    public void Initialize(AreaController _areaController)
+    {
+        areaController = _areaController;
     }
 }
