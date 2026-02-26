@@ -26,13 +26,6 @@ public class GameManager : MonoBehaviour
         targetPosition = splineDolly.CameraPosition;
     }
 
-    public void MoveCamToNextLocation(Transform _newLocation)
-    {
-        if (!_newLocation) { return;}
-        cam.transform.position = _newLocation.position;
-        cam.transform.rotation = _newLocation.rotation;
-    }
-
     private void Update()
     {
         if (!isMoving) { return; }
@@ -44,9 +37,9 @@ public class GameManager : MonoBehaviour
         isMoving = false;
     }
 
-    public void MoveToNewLocation(float _distToMove)
+    public void MoveCamToKnot(float _knot)
     {
-        targetPosition = _distToMove;
+        targetPosition = _knot;
         isMoving = true;
     }
 }

@@ -5,7 +5,7 @@ public class EnemyController : Entity
     private AreaController areaController;
     protected override void die()
     {
-        areaController.EnemyDied();
+        areaController.EnemyDied(this);
         Destroy(gameObject);
     }
 

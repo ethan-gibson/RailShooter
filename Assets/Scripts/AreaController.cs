@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AreaController : MonoBehaviour
 {
-    [SerializeField] private float newCamPos;
-    [SerializeField] private List<EnemyController>  enemies;
+    [SerializeField] private float knotIndexToMoveTo;
+    [SerializeField] private List<EnemyController> enemies;
 
     private int totalEnemiesInArea;
 
@@ -18,12 +18,13 @@ public class AreaController : MonoBehaviour
         }
     }
 
-    public void EnemyDied()
+    public void EnemyDied(EnemyController _controller)
     {
+        enemies.Remove(_controller);
         totalEnemiesInArea--;
         if (totalEnemiesInArea == 0)
         {
-            GameManager.Instance.MoveToNewLocation(newCamPos);
+            GameManager.Instance.MoveCamToKnot(knotIndexToMoveTo);
         }
     }
 }
