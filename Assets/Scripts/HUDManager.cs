@@ -7,6 +7,8 @@ public class HUDManager : MonoBehaviour
     public static HUDManager Instance;
 
     [SerializeField] private TMP_Text ammoCount;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text timeText;
     
     private void Awake()
     {
@@ -21,5 +23,15 @@ public class HUDManager : MonoBehaviour
     public void UpdateAmmoCount(string _message)
     {
         ammoCount.text = _message;
+    }
+
+    public void UpdateScoreText(int _score)
+    {
+        scoreText.text = _score.ToString();
+    }
+
+    public void UpdateTimeText(float _time)
+    {
+        timeText.text = $"{_time : F2}";
     }
 }

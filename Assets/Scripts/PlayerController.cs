@@ -1,5 +1,6 @@
 using System;
 using Cysharp.Threading.Tasks;
+using FiringRange;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -47,6 +48,11 @@ public class PlayerController : Entity
         if (_hit.transform.gameObject.TryGetComponent<EnemyController>(out var _enemyController))
         {
             _enemyController.TakeDamage(damagePerShot);
+        }
+
+        if (_hit.transform.gameObject.TryGetComponent<IDummy>(out var _dummy))
+        {
+            _dummy.OnHit();
         }
     }
 
