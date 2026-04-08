@@ -70,6 +70,7 @@ public class FiringRangeController : MonoBehaviour
 		}
 		HUDManager.Instance.UpdateTimeText(0);
 		cts?.Cancel();
+		startButton.gameObject.SetActive(true);
 	}
 
 	private async UniTask runActivationLoop(CancellationToken _token)

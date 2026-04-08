@@ -32,6 +32,6 @@ public class HUDManager : MonoBehaviour
 
     public void UpdateTimeText(float _time)
     {
-        timeText.text = $"{_time : F2}";
+        timeText.text = _time.ToString("F");
     }
 }
