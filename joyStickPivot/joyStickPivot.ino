@@ -4,8 +4,8 @@
 const int yAxis = A0;       // Joystick X-axis
 const int xAxis = A1;       // Joystick Y-axis
 
-int triggerPin = 9;
-int reloadPin = 10;
+int triggerPin = 10;
+int reloadPin = 9;
 int fireSafety = 4;
 int fireSemi = 5;
 int fireBurst = 6;
@@ -36,16 +36,14 @@ void setup() {
   pinMode(reloadPin, INPUT_PULLUP);
   pinMode(fireSafety, INPUT_PULLUP);
   pinMode(fireSemi, INPUT_PULLUP);
-  pinMode(fireBurst, INPUT_PULLUP);
   pinMode(fireAuto, INPUT_PULLUP);
-  pinMode(hapticPin, OUTPUT);
-  Mouse.begin();
+   Mouse.begin();
   Keyboard.begin();
 }
 
 void loop() {
   int triggerState = digitalRead(triggerPin);
-  int mode = 0; // 0=safety, 1=semi, 2=burst, 3=auto
+  int mode = 3; // 0=safety, 1=semi, 2=burst, 3=auto
 
   // Joystick Logic
 
@@ -58,7 +56,7 @@ void loop() {
   if(abs(xMapped)<threshold){xMapped=0;}
   if(abs(yMapped)<threshold){yMapped=0;}
 
-  Mouse.move(-xMapped, yMapped);
+  Mouse.move(xMapped, yMapped);
 
    // Reload logic
   static bool lastReloadState = HIGH;
